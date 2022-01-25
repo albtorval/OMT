@@ -46,9 +46,9 @@ for N in list_N:
     for p in list_p:
 #        instances_generator_txt(criteria,N,p,density,ctype,ninstances)
         instancias = instances_recuperator_txt(criterion,N,p,density,ctype)
-#        lanzadera_initsol_txt(criterion,N,p,density,ctype,lamb,heuristics,instancias)
+        lanzadera_initsol_txt(criterion,N,p,density,ctype,lamb,heuristics,instancias)
         init_sol   = initsol_recuperator_txt(criterion,N,p,density,ctype)
-#        lanzadera_fix_covering_txt(criterion,N,p,density,ctype,lamb,instancias)
+        lanzadera_fix_covering_txt(criterion,N,p,density,ctype,lamb,instancias)
         fixing_sol = fix_covering_recuperator_txt(criterion,N,p,density,ctype)
         lanzadera_txt(server, N, p, density, ctype, lamb, tlimit, models, instancias, 
                       heuristicos   = heuristics,

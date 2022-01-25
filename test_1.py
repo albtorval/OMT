@@ -18,7 +18,7 @@ import math
 criterion     = 2 #3
 criteria      = [1,2,3]
 server        = 1
-list_N        = [20,30,40,50,60,70,80,90,100]
+list_N        = [40,50,60,70,80,90,100]
 density       = 1
 ctype         = 1 #cost type
 ninstances    = 5 
