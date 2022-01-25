@@ -42,6 +42,8 @@ for N in list_N:
         lamb = [0]*math.floor(2/3*N)+[1]*(N-math.floor(2/3*N))
     if criterion == 3: #K-TRIMMED MEAN CRITERION
         lamb = [0]*math.floor(1/3*N)+[1]*(N-math.floor(2/3*N))+[0]*math.floor(1/3*N)
+        if len(lamb)%10:
+            lamb.append(1)
     list_p  = [math.floor(N/4), math.floor(N/3), math.floor(N/2)]
     for p in list_p:
 #        instances_generator_txt(criteria,N,p,density,ctype,ninstances)

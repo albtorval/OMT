@@ -58,12 +58,12 @@ import math
 ##  - Finally, print results using print_results(.), which saves them in a final txt file
 
 ###### LOOP FUNCTION ########
-criterion     = 1
+criterion     = 3
 criteria      = [1,2,3]
 server        = 1
-list_N        = [10]
+list_N        = [20]
 density       = 1
-ctype         = 2 #cost type
+ctype         = 1
 ninstances    = 5 
 tlimit        = 3600
 heuristics    = [OMT_heuristic_PMEDTOM]
@@ -85,6 +85,8 @@ for N in list_N:
         lamb = [0]*math.floor(2/3*N)+[1]*(N-math.floor(2/3*N))
     if criterion == 3: #K-TRIMMED MEAN CRITERION
         lamb = [0]*math.floor(1/3*N)+[1]*(N-math.floor(2/3*N))+[0]*math.floor(1/3*N)
+        if len(lamb)%10:
+            lamb.append(1)
     list_p  = [math.floor(N/4), math.floor(N/3), math.floor(N/2)]
     for p in list_p:
         instances_generator_txt(criteria,N,p,density,ctype,ninstances)
@@ -253,3 +255,8 @@ for N in list_N:
 ## OMMST can be infeasible
 ## - If lambda! = [1] * N then the PMEDTOM does not return the optimal solution
 ## (for this, the part of PMEDT would have to be changed to that of the problem associated with the lambda)
+        
+
+        
+        
+        
