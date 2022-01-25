@@ -107,8 +107,8 @@ def OMT_mtz(N,p,lamb,instan,
             m.addConstr(l[u] <= p)
     # Compesating assignation to servers network:
     ## One sorted position is not assumed by more than one cost:
-    for k in nodes:
-        m.addConstr(sum([sx[i,j,k] for (i,j) in arcs]) <= 1)
+#    for k in nodes:
+#        m.addConstr(sum([sx[i,j,k] for (i,j) in arcs]) <= 1)
     ## If i->j then only one order is assigned:
     for (i,j) in arcs:
         m.addConstr(sum([sx[i,j,k] for k in nodes]) == x[i,j])

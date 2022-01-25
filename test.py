@@ -58,51 +58,51 @@ import math
 ##  - Finally, print results using print_results(.), which saves them in a final txt file
 
 ###### LOOP FUNCTION ########
-criterion     = 1
-criteria      = [1,2,3]
-server        = 1
-list_N        = [10]
-density       = 1
-ctype         = 2 #cost type
-ninstances    = 5 
-tlimit        = 3600
-heuristics    = [OMT_heuristic_PMEDTOM]
-init_sol_pos  = [1,1,1,1,1] #[1]*ninstances
-fix_cov_bool  = [False]*5 + [True]*3
-models        = [OMT_mtz,
-                 OMT_flow_1,
-                 OMT_flow_2,
-                 OMT_subelim_1,
-                 OMT_subelim_2,
-                 OMT_mtz_covering,
-                 OMT_flow_1_covering,
-                 OMT_flow_2_covering]
-# Loop:
-for N in list_N:
-    if criterion == 1: #MEDIAN CRITERION
-        lamb = [1]*N  
-    if criterion == 2: #K-CENTRUM CRITERION
-        lamb = [0]*math.floor(2/3*N)+[1]*(N-math.floor(2/3*N))
-    if criterion == 3: #K-TRIMMED MEAN CRITERION
-        lamb = [0]*math.floor(1/3*N)+[1]*(N-math.floor(2/3*N))+[0]*math.floor(1/3*N)
-    list_p  = [math.floor(N/4), math.floor(N/3), math.floor(N/2)]
-    for p in list_p:
-        instances_generator_txt(criteria,N,p,density,ctype,ninstances)
-        instancias = instances_recuperator_txt(criterion,N,p,density,ctype)
-        lanzadera_initsol_txt(criterion,N,p,density,ctype,lamb,heuristics,instancias)
-        init_sol   = initsol_recuperator_txt(criterion,N,p,density,ctype)
-        lanzadera_fix_covering_txt(criterion,N,p,density,ctype,lamb,instancias)
-        fixing_sol = fix_covering_recuperator_txt(criterion,N,p,density,ctype)
-        lanzadera_txt(server, N, p, density, ctype, lamb, tlimit, models, instancias, 
-                      heuristicos   = heuristics,
-                      init_sols     = init_sol, 
-                      init_sols_pos = init_sol_pos, 
-                      init_bool     = True,
-                      fixing_sols   = fixing_sol, 
-                      fixing_bool   = fix_cov_bool)
-        bounds_actualization(criterion,server,N,p,density,ctype)
-        print("\n")
-        print_results(criterion,server,N,p,density,ctype,tlimit,models)
+#criterion     = 1
+#criteria      = [1,2,3]
+#server        = 1
+#list_N        = [10]
+#density       = 1
+#ctype         = 2 #cost type
+#ninstances    = 5 
+#tlimit        = 3600
+#heuristics    = [OMT_heuristic_PMEDTOM]
+#init_sol_pos  = [1,1,1,1,1] #[1]*ninstances
+#fix_cov_bool  = [False]*5 + [True]*3
+#models        = [OMT_mtz,
+#                 OMT_flow_1,
+#                 OMT_flow_2,
+#                 OMT_subelim_1,
+#                 OMT_subelim_2,
+#                 OMT_mtz_covering,
+#                 OMT_flow_1_covering,
+#                 OMT_flow_2_covering]
+## Loop:
+#for N in list_N:
+#    if criterion == 1: #MEDIAN CRITERION
+#        lamb = [1]*N  
+#    if criterion == 2: #K-CENTRUM CRITERION
+#        lamb = [0]*math.floor(2/3*N)+[1]*(N-math.floor(2/3*N))
+#    if criterion == 3: #K-TRIMMED MEAN CRITERION
+#        lamb = [0]*math.floor(1/3*N)+[1]*(N-math.floor(2/3*N))+[0]*math.floor(1/3*N)
+#    list_p  = [math.floor(N/4), math.floor(N/3), math.floor(N/2)]
+#    for p in list_p:
+#        instances_generator_txt(criteria,N,p,density,ctype,ninstances)
+#        instancias = instances_recuperator_txt(criterion,N,p,density,ctype)
+#        lanzadera_initsol_txt(criterion,N,p,density,ctype,lamb,heuristics,instancias)
+#        init_sol   = initsol_recuperator_txt(criterion,N,p,density,ctype)
+#        lanzadera_fix_covering_txt(criterion,N,p,density,ctype,lamb,instancias)
+#        fixing_sol = fix_covering_recuperator_txt(criterion,N,p,density,ctype)
+#        lanzadera_txt(server, N, p, density, ctype, lamb, tlimit, models, instancias, 
+#                      heuristicos   = heuristics,
+#                      init_sols     = init_sol, 
+#                      init_sols_pos = init_sol_pos, 
+#                      init_bool     = True,
+#                      fixing_sols   = fixing_sol, 
+#                      fixing_bool   = fix_cov_bool)
+#        bounds_actualization(criterion,server,N,p,density,ctype)
+#        print("\n")
+#        print_results(criterion,server,N,p,density,ctype,tlimit,models)
     
 ## Observations:
 ## - We are giving as initial solution the computed by the PMEDT+OM heuristic 
@@ -113,21 +113,21 @@ for N in list_N:
 ########################## INDIVIDUAL TESTS ###################################
 
 ## General parameters
-#N       = 10
-#p       = 5
-#density = 1
-#lamb    = [1]*N
-#tL      = 60  
+N       = 10
+p       = 5
+density = 1
+lamb    = [1]*N
+tL      = 60  
 
-## Benders warm parameters
-#Bw_MP_time  = 0
-#Bw_MP_gap   = 0
-#Bw_time     = 0
-#Bw_gap      = 0
-#
-## Instance
-#instancias = random_instances_generator(Nnodes = N, Ndensity = density, Ninstances = 1)
-#instancia  = instancias[0]
+# Benders warm parameters
+Bw_MP_time  = 0
+Bw_MP_gap   = 0
+Bw_time     = 0
+Bw_gap      = 0
+
+# Instance
+instancias = random_instances_generator(Nnodes = N, Ndensity = density, Ninstances = 1)
+instancia  = instancias[0]
 ##instancia  = {
 ## (1, 2): 2,
 ## (1, 3): 1,
@@ -151,10 +151,10 @@ for N in list_N:
 #t02 = OMT_heuristic_PMEDTOM(N,p,lamb,instancia,timeLimit=tL)
 #t03 = OMT_relaxed(N,p,lamb,instancia,timeLimit=tL)
 #t04 = OMT_relaxed_covering(N,p,lamb,instancia,timeLimit=tL)
-#t05 = OMT_mtz(N,p,lamb,instancia,timeLimit=tL)
-#t06 = OMT_flow_1(N,p,lamb,instancia,timeLimit=tL)
-#t07 = OMT_flow_2(N,p,lamb,instancia,timeLimit=tL)
-#t08 = OMT_subelim_1(N,p,lamb,instancia,timeLimit=tL)
+t05 = OMT_mtz(N,p,lamb,instancia,timeLimit=tL)
+t06 = OMT_flow_1(N,p,lamb,instancia,timeLimit=tL)
+t07 = OMT_flow_2(N,p,lamb,instancia,timeLimit=tL)
+t08 = OMT_subelim_1(N,p,lamb,instancia,timeLimit=tL)
 #t09 = OMT_subelim_2(N,p,lamb,instancia,timeLimit=tL)
 #t10 = OMT_mtz_old(N,p,lamb,instancia,timeLimit=tL)
 #t11 = OMT_flow_1_old(N,p,lamb,instancia,timeLimit=tL)
@@ -183,21 +183,21 @@ for N in list_N:
 #print(t03)
 #print("\n Linear relaxation (covering)")
 #print(t04)
-#print("\n OMT MTZ")
-#print(t05)
-##print_solution_graph(N,t5,instancia)
-#print("\n OMT FLOW 1")
-#print(t06)
-##print_solution_graph(N,t6,instancia)
-#print("\n OMT FLOW 2")
-#print(t07)
-##print_solution_graph(N,t7,instancia)
-#print("\n OMT SUBELIM 1")
-#print(t08)
-##print_solution_graph(N,t8,instancia)
+print("\n OMT MTZ")
+print(t05)
+print_solution_graph(N,t05,instancia)
+print("\n OMT FLOW 1")
+print(t06)
+print_solution_graph(N,t06,instancia)
+print("\n OMT FLOW 2")
+print(t07)
+print_solution_graph(N,t07,instancia)
+print("\n OMT SUBELIM 1")
+print(t08)
+print_solution_graph(N,t08,instancia)
 #print("\n OMT SUBELIM 2")
 #print(t09)
-##print_solution_graph(N,t9,instancia)
+##print_solution_graph(N,t09,instancia)
 #print("\n OMT MTZ (old version)")
 #print(t10)
 ##print_solution_graph(N,t10,instancia)
