@@ -130,4 +130,6 @@ dmypy.json
 .Rproj.user
 .DS_Store
 .Rhistory
+*.DS_Store
+*.Rhistory
 
